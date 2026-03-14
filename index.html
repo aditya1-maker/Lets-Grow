@@ -101,15 +101,20 @@ document.body.appendChild(masc);
   --text-muted:#6B748A;--text-light:#3A4055;--border:#262D42;
   --shadow:0 2px 10px rgba(0,0,0,.25);--shadow-md:0 6px 22px rgba(0,0,0,.35);
 }
-/* Season themes — 4 only, properly scoped to avoid dark mode conflicts */
-.theme-light.season-spring{--primary:#5B9BF0;--primary-soft:#B8D8FF;--bg:#F0F6FF;}
-.theme-light.season-summer{--primary:#22B573;--primary-soft:#90EABC;--bg:#F0FFF8;}
-.theme-light.season-autumn{--primary:#D4620A;--primary-soft:#F5C08A;--bg:#FFF7F0;}
-.theme-light.season-winter{--primary:#4A6FA5;--primary-soft:#A0BCD8;--bg:#F0F4FA;}
-.theme-dark.season-spring{--primary:#5B9BF0;--primary-soft:#1C3460;}
-.theme-dark.season-summer{--primary:#22B573;--primary-soft:#0D3825;}
-.theme-dark.season-autumn{--primary:#D4620A;--primary-soft:#4A1E00;}
-.theme-dark.season-winter{--primary:#6A9FD5;--primary-soft:#152040;}
+/* Season themes — new palettes */
+/* Spring: sky blue + amethyst + olivine */
+.theme-light.season-spring{--primary:#5B8FD4;--primary-soft:#C3AEDE;--bg:#EEF4FB;--accent:#8FAF5A;}
+/* Summer: old copper + butter yellow + nebula */
+.theme-light.season-summer{--primary:#B87A4A;--primary-soft:#F5E580;--bg:#FDF8EE;--accent:#9B6EA8;}
+/* Autumn: warm clay + terra cotta + dusty orange */
+.theme-light.season-autumn{--primary:#C4714A;--primary-soft:#E8A882;--bg:#FBF2EC;--accent:#D4895A;}
+/* Winter: calm ocean + cloud blue + powder sky + dusty denim */
+.theme-light.season-winter{--primary:#4A8FA5;--primary-soft:#B8D8E8;--bg:#EEF5F8;--accent:#7A9BB8;}
+
+.theme-dark.season-spring{--primary:#7AAAE0;--primary-soft:#3A2860;}
+.theme-dark.season-summer{--primary:#CC9060;--primary-soft:#3A2E00;}
+.theme-dark.season-autumn{--primary:#D4845A;--primary-soft:#4A1E08;}
+.theme-dark.season-winter{--primary:#6AAFC8;--primary-soft:#0E2A38;}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow:hidden;}
@@ -708,54 +713,100 @@ button{
 
 /* ===== APP LOGO ===== */
 
-/* Teks logo = putih. Cara warnain: brightness(0)=hitam dulu, lalu invert+colorize */
-/* Light mode default: primary color via theme var — pakai brightness trick */
+/* Default light: primary color spring */
 .theme-light .app-logo{
-  filter:brightness(0) saturate(100%) invert(47%) sepia(60%) saturate(500%) hue-rotate(195deg) brightness(0.9);
+  filter:brightness(0) saturate(100%) invert(40%) sepia(60%) saturate(400%) hue-rotate(195deg) brightness(0.9);
 }
-/* Dark mode default: putih */
+/* Dark mode default: white */
 .theme-dark .app-logo{
   filter:brightness(0) invert(1);
 }
-
-/* === LIGHT + SEASONS === */
-/* Spring: #5B9BF0 biru langit */
+/* Spring: #5B8FD4 biru */
 .theme-light.season-spring .app-logo{
-  filter:brightness(0) saturate(100%) invert(47%) sepia(60%) saturate(500%) hue-rotate(195deg) brightness(0.9);
+  filter:brightness(0) saturate(100%) invert(40%) sepia(60%) saturate(400%) hue-rotate(195deg) brightness(0.9);
 }
-/* Summer: #22B573 hijau */
+/* Summer: #B87A4A old copper */
 .theme-light.season-summer .app-logo{
-  filter:brightness(0) saturate(100%) invert(55%) sepia(70%) saturate(600%) hue-rotate(118deg) brightness(0.85);
+  filter:brightness(0) saturate(100%) invert(50%) sepia(60%) saturate(400%) hue-rotate(20deg) brightness(0.85);
 }
-/* Autumn: #D4620A oranye */
+/* Autumn: #C4714A warm clay */
 .theme-light.season-autumn .app-logo{
-  filter:brightness(0) saturate(100%) invert(38%) sepia(90%) saturate(700%) hue-rotate(12deg) brightness(0.9);
+  filter:brightness(0) saturate(100%) invert(45%) sepia(70%) saturate(500%) hue-rotate(10deg) brightness(0.88);
 }
-/* Winter: #4A6FA5 biru tua */
+/* Winter: #4A8FA5 calm ocean */
 .theme-light.season-winter .app-logo{
-  filter:brightness(0) saturate(100%) invert(38%) sepia(50%) saturate(500%) hue-rotate(195deg) brightness(0.8);
+  filter:brightness(0) saturate(100%) invert(42%) sepia(50%) saturate(400%) hue-rotate(175deg) brightness(0.85);
 }
-
-/* === DARK + SEASONS: warna terang per theme === */
-/* Spring dark: biru muda cerah */
-.theme-dark.season-spring .app-logo{
-  filter:brightness(0) saturate(100%) invert(100%) sepia(30%) saturate(400%) hue-rotate(185deg) brightness(1.4);
+/* Dark seasons */
+.theme-dark.season-spring .app-logo{filter:brightness(0) saturate(100%) invert(100%) sepia(30%) saturate(300%) hue-rotate(185deg) brightness(1.4);}
+.theme-dark.season-summer .app-logo{filter:brightness(0) saturate(100%) invert(100%) sepia(40%) saturate(400%) hue-rotate(20deg) brightness(1.3);}
+.theme-dark.season-autumn .app-logo{filter:brightness(0) saturate(100%) invert(100%) sepia(50%) saturate(400%) hue-rotate(10deg) brightness(1.2);}
+.theme-dark.season-winter .app-logo{filter:brightness(0) saturate(100%) invert(100%) sepia(30%) saturate(300%) hue-rotate(180deg) brightness(1.3);}
+/* ===== LOADING SCREEN ===== */
+#loading-screen{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .5s ease;
 }
-/* Summer dark: hijau mint */
-.theme-dark.season-summer .app-logo{
-  filter:brightness(0) saturate(100%) invert(100%) sepia(40%) saturate(500%) hue-rotate(110deg) brightness(1.3);
+#loading-screen.fade-out{opacity:0;pointer-events:none;}
+.loading-content{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.loading-sprout-wrap{position:relative;width:110px;height:130px;}
+.loading-sprout-svg{display:block;transform-origin:60px 134px;animation:sprout-sway 2.5s ease-in-out infinite;}
+.loading-bee{
+  position:absolute;top:8px;left:68px;
+  animation:bee-orbit 3s ease-in-out infinite;
+  transform-origin:-26px 26px;
 }
-/* Autumn dark: oranye hangat */
-.theme-dark.season-autumn .app-logo{
-  filter:brightness(0) saturate(100%) invert(100%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(1.2);
+.loading-logo{height:34px;width:auto;}
+.loading-bar-track{
+  width:180px;height:5px;
+  background:var(--border);border-radius:99px;overflow:hidden;
+  margin-top:4px;
 }
-/* Winter dark: biru es */
-.theme-dark.season-winter .app-logo{
-  filter:brightness(0) saturate(100%) invert(100%) sepia(30%) saturate(400%) hue-rotate(200deg) brightness(1.3);
+.loading-bar-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--primary),var(--primary-soft));
+  border-radius:99px;
+  transition:width .08s linear;
 }
+.loading-tagline{font-size:12px;color:var(--text-muted);font-weight:600;letter-spacing:.03em;}
 </style>
 </head>
 <body class="theme-light season-spring">
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="loading-content">
+    <div class="loading-sprout-wrap">
+      <svg width="110" height="130" viewBox="0 0 120 140" fill="none" class="loading-sprout-svg">
+        <path d="M38 128 Q36 118 40 116 H80 Q84 118 82 128Z" fill="#D4B080"/>
+        <rect x="34" y="126" width="52" height="8" rx="4" fill="#C8A870"/>
+        <ellipse cx="60" cy="116" rx="20" ry="4" fill="#8B6240"/>
+        <path d="M60 115 Q59 100 60 85" stroke="#6DB860" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        <path d="M59 100 Q42 96 36 82 Q52 80 59 96Z" fill="#80D070"/>
+        <path d="M61 90 Q78 84 84 70 Q68 70 61 86Z" fill="#60B050"/>
+        <path d="M60 85 Q57 75 60 66 Q63 75 60 85Z" fill="#A0E060"/>
+      </svg>
+      <div class="loading-bee">
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+          <ellipse cx="16" cy="18" rx="9" ry="6" fill="#FFD600"/>
+          <rect x="10" y="14" width="12" height="2.5" rx="1.2" fill="#333" opacity="0.25"/>
+          <rect x="10" y="18" width="12" height="2.5" rx="1.2" fill="#333" opacity="0.25"/>
+          <ellipse cx="11" cy="11" rx="6" ry="3.5" fill="white" opacity="0.8" transform="rotate(-35 11 11)"/>
+          <ellipse cx="21" cy="11" rx="6" ry="3.5" fill="white" opacity="0.8" transform="rotate(35 21 11)"/>
+          <circle cx="13" cy="18" r="1.2" fill="#333" opacity="0.5"/>
+          <circle cx="19" cy="18" r="1.2" fill="#333" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAABICAYAAABWUygDAAAVXmVYSWZNTQAqAAAACAAFAQAABAAAAAEAAAAAAQEABAAAAAEAAAAAArwAAQAACngAAABKh2kABAAAAAEAAArCARIABAAAAAEAAAAAAAAAADw/eHBhY2tldCBiZWdpbj0iPyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSBUZXN0LlNOQVBTSE9UIj4KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICB4bWxuczpBdHRyaWI9Imh0dHA6Ly9ucy5hdHRyaWJ1dGlvbi5jb20vYWRzLzEuMC8iPgogICAgICA8QXR0cmliOkFkcz4KICAgICAgICA8cmRmOlNlcT4KICAgICAgICAgIDxyZGY6bGkKICAgICAgICAgICAgQXR0cmliOkZiSWQ9IjUyNTI2NTkxNDE3OTU4MCIKICAgICAgICAgICAgQXR0cmliOkNyZWF0ZWQ9IjIwMjYtMDMtMTQiCiAgICAgICAgICAgIEF0dHJpYjpUb3VjaFR5cGU9IjIiCiAgICAgICAgICAgIEF0dHJpYjpFeHRJZD0iZDE0MmRiMTItMGM0My00MDFmLWI2ZGUtZGNkZTdkNDIyNDdkIi8+CiAgICAgICAgPC9yZGY6U2VxPgogICAgICA8L0F0dHJpYjpBZHM+CiAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9InciPz4AAZIIAAQAAAABAAAAAAAAAAAAAQK8AAEAAAp4AAAK5gAAAAA8P3hwYWNrZXQgYmVnaW49Ij8iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgVGVzdC5TTkFQU0hPVCI+CiAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgeG1sbnM6QXR0cmliPSJodHRwOi8vbnMuYXR0cmlidXRpb24uY29tL2Fkcy8xLjAvIj4KICAgICAgPEF0dHJpYjpBZHM+CiAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICA8cmRmOmxpCiAgICAgICAgICAgIEF0dHJpYjpGYklkPSI1MjUyNjU5MTQxNzk1ODAiCiAgICAgICAgICAgIEF0dHJpYjpDcmVhdGVkPSIyMDI2LTAzLTE0IgogICAgICAgICAgICBBdHRyaWI6VG91Y2hUeXBlPSIyIgogICAgICAgICAgICBBdHRyaWI6RXh0SWQ9ImQxNDJkYjEyLTBjNDMtNDAxZi1iNmRlLWRjZGU3ZDQyMjQ3ZCIvPgogICAgICAgIDwvcmRmOlNlcT4KICAgICAgPC9BdHRyaWI6QWRzPgogICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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" id="loading-logo" class="loading-logo" alt="Growy"/>
+    <div class="loading-bar-track">
+      <div class="loading-bar-fill" id="loading-bar-fill"></div>
+    </div>
+    <p class="loading-tagline" id="loading-tagline">Growing your day...</p>
+  </div>
+</div>
 
 <!-- ONBOARDING -->
 <div id="onboarding" class="onboarding-overlay hidden">
@@ -1307,10 +1358,10 @@ const PLANT_STAGES=['seed','sprout','small','bloom'];
 const TASKS_PER_STAGE=5;
 
 const SEASONS=[
-  {id:'spring',label:'Spring',labelId:'Semi',   color:'#5B9BF0'},
-  {id:'summer',label:'Summer',labelId:'Panas',  color:'#22B573'},
-  {id:'autumn',label:'Autumn',labelId:'Gugur',  color:'#D4620A'},
-  {id:'winter',label:'Winter',labelId:'Dingin', color:'#4A6FA5'}
+  {id:'spring',label:'Spring',labelId:'Semi',   color:'#5B8FD4'},
+  {id:'summer',label:'Summer',labelId:'Panas',  color:'#B87A4A'},
+  {id:'autumn',label:'Autumn',labelId:'Gugur',  color:'#C4714A'},
+  {id:'winter',label:'Winter',labelId:'Dingin', color:'#4A8FA5'}
 ];
 
 /* ============================================================
@@ -1345,15 +1396,64 @@ let journalFilter='all';
 let activeFilter='all';
 
 /* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+function showLoadingScreen(callback){
+  const screen=document.getElementById('loading-screen');
+  const bar=document.getElementById('loading-bar-fill');
+  const tagline=document.getElementById('loading-tagline');
+  const logo=document.getElementById('loading-logo');
+
+  // Apply logo filter based on current theme/season
+  const season=S.profile?.season||'spring';
+  const dark=S.profile?.theme==='dark';
+  const filters={
+    spring:'brightness(0) saturate(100%) invert(40%) sepia(60%) saturate(400%) hue-rotate(195deg) brightness(0.9)',
+    summer:'brightness(0) saturate(100%) invert(50%) sepia(60%) saturate(400%) hue-rotate(20deg) brightness(0.85)',
+    autumn:'brightness(0) saturate(100%) invert(45%) sepia(70%) saturate(500%) hue-rotate(10deg) brightness(0.88)',
+    winter:'brightness(0) saturate(100%) invert(42%) sepia(50%) saturate(400%) hue-rotate(175deg) brightness(0.85)',
+  };
+  logo.style.filter = dark ? 'brightness(0) invert(1)' : (filters[season]||filters.spring);
+
+  const tags_en=['Growing your day...','Watering your tasks...','Almost ready 🌱','Let\'s grow together!'];
+  const tags_id=['Menyiapkan harimu...','Menyiram tugasmu...','Sebentar lagi 🌱','Ayo tumbuh bersama!'];
+  const tags=S.profile?.lang==='id'?tags_id:tags_en;
+
+  let progress=0;
+  let tagIdx=0;
+  tagline.textContent=tags[0];
+
+  const interval=setInterval(()=>{
+    progress+=Math.random()*18+8;
+    if(progress>=100) progress=100;
+    bar.style.width=progress+'%';
+    // rotate taglines
+    const newIdx=Math.min(tags.length-1,Math.floor((progress/100)*tags.length));
+    if(newIdx!==tagIdx){tagIdx=newIdx;tagline.textContent=tags[tagIdx];}
+    if(progress>=100){
+      clearInterval(interval);
+      setTimeout(()=>{
+        screen.classList.add('fade-out');
+        setTimeout(()=>{screen.style.display='none';callback();},500);
+      },300);
+    }
+  },120);
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded',()=>{
   loadState();
-  if(!localStorage.getItem('growy_v2_init')){
-    showOb();
-  } else {
-    initApp();
-  }
+  // Apply theme early so loading screen uses correct colors
+  applyTheme();
+  showLoadingScreen(()=>{
+    if(!localStorage.getItem('growy_v2_init')){
+      showOb();
+    } else {
+      initApp();
+    }
+  });
 });
 
 function loadState(){
